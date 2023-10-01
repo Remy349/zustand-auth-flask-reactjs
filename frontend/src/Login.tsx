@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React from 'react'
 import { useAuthStore } from './store/auth'
+import { useNavigate } from 'react-router-dom'
 
 export const Login = () => {
   const setToken = useAuthStore((state) => state.setToken)
-  const token = useAuthStore((state) => state.token)
+  const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -19,16 +20,16 @@ export const Login = () => {
 
     setToken(resLogin.data.access_token)
 
-    const resProfile = await axios.get(
-      'http://localhost:5000/api/auth/profile',
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    )
+    navigate('/profile')
 
-    console.log(resProfile)
+    // const resProfile = await axios.get(
+    //   'http://localhost:5000/api/auth/profile',
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   },
+    // )
   }
 
   return (
