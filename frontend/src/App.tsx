@@ -1,7 +1,9 @@
+import { Login } from './Login'
+
 function App() {
   return (
     <main>
-      <h1>OK</h1>
+      <Login />
     </main>
   )
 }
