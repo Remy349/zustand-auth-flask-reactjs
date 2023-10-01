@@ -1,7 +1,7 @@
 import flaskr.models
 from flask import Flask, jsonify
 from config import DevelopmentConfig
-from flaskr.extensions import db, migrate, api, jwt
+from flaskr.extensions import db, migrate, api, jwt, cors
 
 from flaskr.resources.user import bp as user_bp
 from flaskr.resources.auth import bp as auth_bp
@@ -19,6 +19,7 @@ def create_app(testing_config=None):
     migrate.init_app(app, db, compare_type=True)
     api.init_app(app)
     jwt.init_app(app)
+    cors.init_app(app)
 
     @jwt.expired_token_loader
     def expired_token_callback(jwt_header, jwt_payload):
