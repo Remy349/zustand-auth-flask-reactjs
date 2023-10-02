@@ -24,9 +24,14 @@ export const Nav = () => {
               <Link to='/'>Home</Link>
             </li>
             {isAuth ? (
-              <li>
-                <Button onClick={handleClick}>Logout</Button>
-              </li>
+              <>
+                <li>
+                  <Link to='/profile'>Profile</Link>
+                </li>
+                <li>
+                  <Button onClick={handleClick}>Logout</Button>
+                </li>
+              </>
             ) : (
               <>
                 <li>
